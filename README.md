@@ -1,7 +1,7 @@
 zxingnetapi
 ===========
 
-[Web API](http://zxingnetapi.azurewebsites.net/) into ZXing.NET barcode methods.
+[Web API](http://zxingnetapi.azurewebsites.net/) into [ZXing.NET](http://zxingnet.codeplex.com/) barcode methods.
 
 ##Currently Available
 
