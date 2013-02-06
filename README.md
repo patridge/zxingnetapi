@@ -20,3 +20,7 @@ zxingnetapi
 
 * Other 
 * Barcode Reading
+
+##License
+
+MIT license. If you do something cool with it, though, I'd love to hear about it.
