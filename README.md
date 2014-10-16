@@ -1,7 +1,7 @@
 zxingnetapi
 ===========
 
-[Web API](http://zxingnetapi.azurewebsites.net/) into [ZXing.NET](http://zxingnet.codeplex.com/) barcode methods.
+[Web API](http://zxingnetapi.azurewebsites.net/barcode/qrcode/?value=hello%20world&width=250&height=250) into [ZXing.NET](http://zxingnet.codeplex.com/) barcode methods.
 
 ##Currently Available
 
