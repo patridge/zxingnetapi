@@ -7,7 +7,7 @@ zxingnetapi
 
 ###Barcode Image Generation
 
-* `/barcode/qrcode/?` ([demo](http://zxingnetapi.azurewebsites.net/barcode/qrcode/?value=I+did+it&height=500&width=500]))
+* `/barcode/qrcode/?` ([demo](http://zxingnetapi.azurewebsites.net/barcode/qrcode/?value=I+did+it&height=500))
   * `value=this+value+is+encoded+into+the+barcode`
   * [`width=x`]
   * [`height=y`]
