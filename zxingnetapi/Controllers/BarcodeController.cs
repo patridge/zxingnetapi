@@ -20,14 +20,12 @@ namespace zxingnetapi.Controllers {
             }
 
             var response = new HttpResponseMessage();
-            var encodingOptions = new ZXing.Common.EncodingOptions();
-            if (height.HasValue) {
-                encodingOptions.Hints.Add(ZXing.EncodeHintType.HEIGHT, height.Value);
-            }
-            IBarcodeWriter writer = new BarcodeWriter() {
+            var writer = new BarcodeWriter() {
                 Format = BarcodeFormat.CODE_128,
-                Options = encodingOptions,
             };
+            if (height.HasValue) {
+                writer.Options.Hints[ZXing.EncodeHintType.HEIGHT] = height.Value;
+            }
 
             Bitmap barcodeBitmap = writer.Write(value);
             using (var pngStream = new MemoryStream()) {
@@ -40,19 +38,17 @@ namespace zxingnetapi.Controllers {
         [Route("Barcode/QrCode")]
         public HttpResponseMessage GetQrCode(string value, int? width = null, int? height = null) {
             var response = new HttpResponseMessage();
-            var encodingOptions = new ZXing.Common.EncodingOptions();
+            var writer = new BarcodeWriter() {
+                Format = BarcodeFormat.QR_CODE,
+            };
             int? widthHint = width ?? height;
             int? heightHint = height ?? width;
             if (widthHint.HasValue) {
-                encodingOptions.Hints.Add(ZXing.EncodeHintType.WIDTH, widthHint.Value);
+                writer.Options.Hints[ZXing.EncodeHintType.WIDTH] = widthHint.Value;
             }
             if (heightHint.HasValue) {
-                encodingOptions.Hints.Add(ZXing.EncodeHintType.HEIGHT, heightHint.Value);
+                writer.Options.Hints[ZXing.EncodeHintType.HEIGHT] = heightHint.Value;
             }
-            IBarcodeWriter writer = new BarcodeWriter() {
-                Format = BarcodeFormat.QR_CODE,
-                Options = encodingOptions,
-            };
 
             Bitmap barcodeBitmap = writer.Write(value);
             using (var pngStream = new MemoryStream()) {

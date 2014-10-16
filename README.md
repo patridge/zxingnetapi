@@ -15,7 +15,7 @@ zxingnetapi
 * `/barcode/code128/?` ([demo](http://zxingnetapi.azurewebsites.net/barcode/code128/?value=I+did+it))
   * `value=this+value+is+encoded+into+the+barcode`
     * length = 1..81 (else 400 error in JSON).
-  * [`height=y`]
+  * [`height=y`] (17..~65,000, else error)
 
 ##Newly Added
 
