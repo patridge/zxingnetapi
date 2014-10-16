@@ -20,8 +20,13 @@ namespace zxingnetapi.Controllers {
             }
 
             var response = new HttpResponseMessage();
+            var encodingOptions = new ZXing.Common.EncodingOptions();
+            if (height.HasValue) {
+                encodingOptions.Hints.Add(ZXing.EncodeHintType.HEIGHT, height.Value);
+            }
             IBarcodeWriter writer = new BarcodeWriter() {
                 Format = BarcodeFormat.CODE_128,
+                Options = encodingOptions,
             };
 
             Bitmap barcodeBitmap = writer.Write(value);
