@@ -36,11 +36,13 @@ namespace zxingnetapi.Controllers {
         public HttpResponseMessage GetQrCode(string value, int? width = null, int? height = null) {
             HttpResponseMessage response = new HttpResponseMessage();
             ZXing.Common.EncodingOptions encodingOptions = new ZXing.Common.EncodingOptions();
-            if (width.HasValue) {
-                encodingOptions.Hints.Add(ZXing.EncodeHintType.WIDTH, width.Value);
+            int? widthHint = width ?? height;
+            int? heightHint = height ?? width;
+            if (widthHint.HasValue) {
+                encodingOptions.Hints.Add(ZXing.EncodeHintType.WIDTH, widthHint.Value);
             }
-            if (height.HasValue) {
-                encodingOptions.Hints.Add(ZXing.EncodeHintType.HEIGHT, height.Value);
+            if (heightHint.HasValue) {
+                encodingOptions.Hints.Add(ZXing.EncodeHintType.HEIGHT, heightHint.Value);
             }
             IBarcodeWriter writer = new BarcodeWriter() {
                 Format = BarcodeFormat.QR_CODE,
