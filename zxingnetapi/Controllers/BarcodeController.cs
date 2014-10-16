@@ -5,12 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using AttributeRouting.Web.Http;
 using ZXing;
 
 namespace zxingnetapi.Controllers {
     public class BarcodeController : ApiController {
-        [GET("Barcode/Code128")]
+        [Route("Barcode/Code128"), HttpGet]
         public HttpResponseMessage GetCode128(string value) {
             if (value == null || value.Length == 1 || value.Length > 80) {
                 HttpResponseMessage errorResponse = new HttpResponseMessage(HttpStatusCode.BadRequest) {
@@ -32,7 +31,7 @@ namespace zxingnetapi.Controllers {
                 return response;
             }
         }
-        [GET("Barcode/QrCode")]
+        [Route("Barcode/QrCode")]
         public HttpResponseMessage GetQrCode(string value, int? width = null, int? height = null) {
             HttpResponseMessage response = new HttpResponseMessage();
             ZXing.Common.EncodingOptions encodingOptions = new ZXing.Common.EncodingOptions();
